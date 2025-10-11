@@ -5,6 +5,7 @@ set -eo nounset
 ## Ask the user to name the test
 echo "Enter log name"
 read LOG_NAME
+mkdir -p logs
 LOG_FILE=logs/performance_report_$LOG_NAME.log
 
 ## Define some system params
