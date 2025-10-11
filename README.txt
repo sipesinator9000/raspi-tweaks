@@ -13,7 +13,9 @@ The performance_test runs a stress test with sysbench whilst logging basic tempe
 
 The stress test itself is simply asking all four CPU cores to factor prime numbers up to 15000.
 
-```alex@retropie:~/raspi-tweaks $ cat /home/alex/raspi-tweaks/logs/performance_report_1400_mhz.log
+The log file produced looks something like this:
+
+
 ==== 1400_mhz ====
 
 CPU Clock Speed: 1400 Mhz
@@ -59,5 +61,4 @@ Threads fairness:
 === Stress test finished at Sat 11 Oct 17:37:47 BST 2025 ===
 Date 11.10.25, Time 17:37:47, CPU temp=29.5'C, volt=1.3250V, throttled=0x0, MEM 18%
 ...
-Date 11.10.25, Time 17:37:52, CPU temp=27.9'C, volt=1.2250V, throttled=0x0, MEM 18%```
-
+Date 11.10.25, Time 17:37:52, CPU temp=27.9'C, volt=1.2250V, throttled=0x0, MEM 18%
