@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# Expand filesystem
-sudo raspi-config --expand-rootfs
-
 # Update raspi things
 sudo apt-get update
 sudo apt-get dist-upgrade
