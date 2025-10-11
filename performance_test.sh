@@ -40,7 +40,9 @@ sleep 5s
 
 ## Run sysbench test and append the output to the log file
 echo "Running stress test..."
-echo "=== Stress test started at $(date) ===" >> $LOG_FILE
+echo "
+=== Stress test started at $(date) ===
+" >> $LOG_FILE
 sysbench --test=cpu --cpu-max-prime=20000 --num-threads=4 run >> $LOG_FILE
 STRESS_EXIT_CODE=$?
 echo "=== Stress test finished at $(date) ===" >> $LOG_FILE
