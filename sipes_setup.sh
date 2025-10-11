@@ -16,7 +16,10 @@ sudo ./retropie_setup.sh
 
 # Install additional workflow tools
 sudo apt-get install vim
+sudo apt-get install emacs
 sudo apt-get install silversearcher-ag
+sudo apt-get install tmux
+sudo apt-get install sl
 
 # Install testing tools
 sudo apt-get install iostat
