@@ -18,8 +18,8 @@ echo "==== $LOG_NAME ====
 " > $LOG_FILE
 
 ## Add some test params to the top of the log
-echo "CPU Clock Speed: $CPU_CLOCK_MHZ Mhz"
-echo "CPU Voltage: $CPU_V volts"
+echo "CPU Clock Speed: $CPU_CLOCK_MHZ Mhz" >> $LOG_FILE
+echo "CPU Voltage: $CPU_V volts
 
 ==================
 " >> $LOG_FILE
