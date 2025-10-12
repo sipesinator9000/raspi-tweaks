@@ -11,14 +11,15 @@ LOG_FILE=logs/performance_report_$LOG_NAME.log
 ## Define some system params
 CPU_CLOCK=`cat /sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_max_freq`
 CPU_CLOCK_MHZ=$(expr $CPU_CLOCK / 1000)
+CPU_V=`vcgencmd measure_volts core`
 
 ## Create a log file and add the test name at the top
 echo "==== $LOG_NAME ====
 " > $LOG_FILE
 
 ## Add some test params to the top of the log
-#source /boot/config.txt
-echo "CPU Clock Speed: $CPU_CLOCK_MHZ Mhz
+echo "CPU Clock Speed: $CPU_CLOCK_MHZ Mhz"
+echo "CPU Voltage: $CPU_V volts"
 
 ==================
 " >> $LOG_FILE
