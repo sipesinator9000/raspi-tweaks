@@ -62,3 +62,31 @@ Threads fairness:
 Date 11.10.25, Time 17:37:47, CPU temp=29.5'C, volt=1.3250V, throttled=0x0, MEM 18%
 ...
 Date 11.10.25, Time 17:37:52, CPU temp=27.9'C, volt=1.2250V, throttled=0x0, MEM 18%
+
+
+
+h1. Overclock Profiles
+
+
+=== Profile 1 ===
+Modest CPU overclock. Overvolting for this clock speed seems to yield worse performance.
+
+arm_freq=1500
+gpu_freq=500
+core_freq=500
+sdram_freq=450
+sdram_schmoo=0x02000020
+over_voltage=0
+sdram_over_voltage=0
+
+
+=== Profile 2 ===
+ETA Prime's profile. Not super stable on my 3b+
+
+arm_freq=1500
+gpu_freq=500
+core_freq=500
+sdram_freq=500
+sdram_schmoo=0x02000020
+over_voltage=2
+sdram_over_voltage=1
