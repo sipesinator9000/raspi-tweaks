@@ -1,7 +1,7 @@
-# Fan temperature range
-offTEMP=20
-minTEMP=20
-midTEMP=70
+## Define fan temperature ranges
+offTEMP=10
+minTEMP=10
+midTEMP=50
 maxTEMP=85
 
 #GPIO 17 default Fan ON/OFF Signal
@@ -26,11 +26,11 @@ def getCPUtemp():
 while True:
         cpuTemp = int(float(getCPUtemp()))
         if cpuTemp >= minTEMP:
-                fan.start(50) #min duty cycle
+                fan.start(40) #min duty cycle
         elif cpuTemp >= midTEMP:
                 fan.start(75) #mid duty cycle
         elif cpuTemp >= maxTEMP:
-                fan.start(90) #max duty cycle
+                fan.start(95) #max duty cycle
         elif cpuTemp < offTEMP:
                 fan.stop()
         time.sleep(1.00)
