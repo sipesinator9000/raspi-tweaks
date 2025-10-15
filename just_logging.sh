@@ -1,0 +1,40 @@
+#!/bin/bash
+
+set -eo nounset
+
+## Ask the user to name the test
+echo "Enter log name"
+read LOG_NAME
+mkdir -p logs
+LOG_FILE=logs/performance_report_$LOG_NAME.log
+
+## Define some system params
+CPU_CLOCK=`cat /sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_max_freq`
+CPU_CLOCK_MHZ=$(expr $CPU_CLOCK / 1000)
+CPU_V=`vcgencmd measure_volts core`
+
+## Create a log file and add the test name at the top
+echo "==== $LOG_NAME ====
+" > $LOG_FILE
+
+## Add some test params to the top of the log
+echo "CPU Clock Speed: $CPU_CLOCK_MHZ Mhz" >> $LOG_FILE
+echo "CPU Voltage: $CPU_V volts
+
+==================
+" >> $LOG_FILE
+
+## Start temperature logging in the background
+log_temperature() {
+    while true; do
+        echo "Date $(date +"%d.%m.%y"), Time $(date +"%T"), CPU $(vcgencmd measure_temp), $(vcgencmd measure_volts), $(vcgencmd get_throttled), MEM $(free | awk '/^Mem/ {printf "%d%s",$3/$2*100,"%"}')" >> $LOG_FILE
+        sleep 1
+    done
+}
+
+echo "Starting temperature logging to $LOG_FILE..."
+log_temperature
+
+echo "Logging stopped. Output saved to $PWD/$LOG_FILE"
+
+exit
