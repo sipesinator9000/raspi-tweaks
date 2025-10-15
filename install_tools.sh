@@ -21,6 +21,7 @@ sudo apt-get install sl
 sudo apt-get install iostat
 sudo apt-get install sysbench
 sudo apt-get install xclip
+sudo apt install nmon
 
 # Install Retroflag NesPi safe shutdown script
 cd ~
