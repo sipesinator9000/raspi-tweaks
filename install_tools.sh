@@ -5,6 +5,10 @@ sudo apt-get update
 sudo apt-get dist-upgrade
 sudo apt-get upgrade
 
+# Install some required python libraries for shutdown script
+sudo apt-get install python-dev python-pip python-gpiozero
+sudo pip install psutil pyserial
+
 # Install additional workflow tools
 sudo apt-get install vim
 sudo apt-get install emacs
