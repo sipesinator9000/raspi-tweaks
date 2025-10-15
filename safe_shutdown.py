@@ -1,3 +1,7 @@
+## TODO ##
+# - put this in its own repo
+# - write my own installer
+#
 # Wiring:
 #  GPIO 2  Reset Button (INPUT)
 #  GPIO 3  Power Button (INPUT)
@@ -33,7 +37,7 @@ while True:
 		os.system("sudo sleep 0.5s")
 		os.system("shutdown -h now")
 	else:
-		led.on()  #Take control of LED instead of relying on TX pin
+		led.on()
 		
 
 	## RESET Button pressed
