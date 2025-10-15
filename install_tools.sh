@@ -8,6 +8,7 @@ sudo apt-get upgrade
 # Install some required python libraries for shutdown script
 sudo apt-get install python-dev python-pip python-gpiozero
 sudo pip install psutil pyserial
+sudo apt install pigpio
 
 # Install additional workflow tools
 sudo apt-get install vim                # 1st fav text editor
