@@ -30,7 +30,7 @@ GPIO.setup(resetButton,GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
 while True:
 	## POWER button
-	## When power button is unlatched, kill emulationstation and then run shutdown command
+	## Kill emulationstation and then shut down the pi
 	if not powerButton.is_pressed:
 		led.blink(.06,.06)
 		os.system("sudo killall emulationstation")
@@ -41,8 +41,11 @@ while True:
 		
 
 	## RESET Button pressed
-	## Restart emulationstation process
+	## Restart emulationstation
 	if resetBtn.is_pressed:
+		led.off()
+		os.system("sleep .2s")
+		led.on()
 		os.system("sudo killall emulationstation")
 		os.system("sudo sleep 0.5s")
 		os.system("emulationstation")
