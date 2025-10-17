@@ -32,7 +32,7 @@ while True:
 	## POWER button
 	## Kill emulationstation and then shut down the pi
 	if not powerButton.is_pressed:
-		led.blink(.06,.06)
+		led.blink(.07,.07)
 		os.system("sudo killall emulationstation")
 		os.system("sudo sleep 0.5s")
 		os.system("shutdown -h now")
@@ -41,11 +41,15 @@ while True:
 		
 
 	## RESET Button pressed
-	## Restart emulationstation
+	## Restart emulationstation. Blink LED twice at the same time (atm is consecutive)
 	if resetBtn.is_pressed:
 		led.off()
-		os.system("sleep .2s")
+		os.system("sleep .7s")
 		led.on()
+		os.system("sleep .07s")
+		led.off()
+		os.system("sleep .07")
+		led.on
 		os.system("sudo killall emulationstation")
 		os.system("sudo sleep 0.5s")
 		os.system("emulationstation")
@@ -54,6 +58,6 @@ while True:
 	## RESET Button held
 	## LEDs flash rapidly and console is rebooted
 	if resetBtn.is_held:
-		led.blink(0.06,0.06)
+		led.blink(0.07,0.07)
 		os.system("sudo killall emulationstation")
 		os.system("sudo reboot -h now")
