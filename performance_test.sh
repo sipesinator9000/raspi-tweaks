@@ -6,7 +6,7 @@ set -eo nounset
 echo "Enter log name"
 read LOG_NAME
 mkdir -p logs
-LOG_FILE=logs/performance_report_$LOG_NAME.log
+LOG_FILE=logs/$LOG_NAME.log
 
 ## Define some system params
 CPU_CLOCK=`cat /sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_max_freq`
