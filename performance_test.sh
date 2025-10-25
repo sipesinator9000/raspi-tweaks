@@ -3,23 +3,33 @@
 set -eo nounset
 
 ## Ask the user to name the test
-echo "Enter log name"
-read LOG_NAME
+echo "Enter test name"
+read TEST_NAME
 mkdir -p logs
-LOG_FILE=logs/$LOG_NAME.log
+LOG_FILE=logs/$TEST_NAME.log
 
 ## Define some system params
 CPU_CLOCK=`cat /sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_max_freq`
 CPU_CLOCK_MHZ=$(expr $CPU_CLOCK / 1000)
 CPU_V=`vcgencmd measure_volts core`
+SYSTEM_STATS=`vcgencmd get_config int | egrep "(arm|core|gpu|sdram)_freq|over_voltage|sdram_schmoo"`
+DATE=`date +"%Y-%m-%d"`
 
-## Create a log file and add the test name at the top
-echo "==== $LOG_NAME ====
-" > $LOG_FILE
+LOG_FILE=logs/$DATE-$TEST_NAME.log
+
+## Create a log file
+touch $LOG_FILE
+## Create a header for the report
+echo "==== Performance Report $TEST_NAME ====
+
+$DATE
+Test Name: $TEST_NAME
+" >> $LOG_FILE
 
 ## Add some test params to the top of the log
-echo "CPU Clock Speed: $CPU_CLOCK_MHZ Mhz" >> $LOG_FILE
-echo "CPU Voltage: $CPU_V volts
+#echo "CPU Clock Speed: $CPU_CLOCK_MHZ Mhz" >> $LOG_FILE
+#echo "CPU Voltage: $CPU_V volts" >> $LOG_FILE
+echo "$SYSTEM_STATS
 
 ==================
 " >> $LOG_FILE
