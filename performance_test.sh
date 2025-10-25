@@ -20,7 +20,7 @@ LOG_FILE=logs/$DATE-$TEST_NAME.log
 ## Create a log file
 touch $LOG_FILE
 ## Create a header for the report
-echo "==== Performance Report $TEST_NAME ====
+echo "===== Performance Report $TEST_NAME ======
 
 $DATE
 Test Name: $TEST_NAME
@@ -31,7 +31,7 @@ Test Name: $TEST_NAME
 #echo "CPU Voltage: $CPU_V volts" >> $LOG_FILE
 echo "$SYSTEM_STATS
 
-==================
+=======================================
 " >> $LOG_FILE
 
 ## Start temperature logging in the background
