@@ -46,9 +46,6 @@ echo "Starting temperature logging to $LOG_FILE..."
 log_temperature &
 LOGGER_PID=$!
 
-# Log temperature for 5 seconds before stress testing
-sleep 5s
-
 ## Run sysbench test and append the output to the log file
 echo "Running stress test..."
 echo "=== Stress test started at $(date) ===" >> $LOG_FILE
