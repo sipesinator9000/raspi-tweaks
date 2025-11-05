@@ -61,6 +61,6 @@ echo "=== Stress test finished at $(date) ===" >> $LOG_FILE
 echo "Stopping temperature logging..."
 kill $LOGGER_PID 2>/dev/null
 
-echo "Performance test finished. Output saved to $PWD/$LOG_FILE"
+echo "Performance test finished. Output saved to $LOG_FILE"
 
 exit
