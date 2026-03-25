@@ -18,10 +18,6 @@ CPU_V=`vcgencmd measure_volts core`
 SYSTEM_STATS=`vcgencmd get_config int | egrep "(arm|core|gpu|sdram)_freq|over_voltage|sdram_schmoo"`
 DATE=`date +"%Y-%m-%d"`
 
-LOG=~/logs/$DATE-$TEST_NAME.log
-
-## Create a log file
-touch $LOG
 ## Create a header for the report
 echo "===== Performance Report $TEST_NAME ======
 
