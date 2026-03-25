@@ -45,19 +45,19 @@ echo "Starting temperature logging to $LOG..."
 log_temperature &
 LOGGER_PID=$!
 
-## Log system information for 5 seconds before starting stress test
-sleep 5
+## Log system information for 3 seconds before starting stress test
+sleep 3
 
 ## Run sysbench test and append the output to the log file
 echo "Running stress test..."
 echo "
 === Stress test started at $(date) ===" >> $LOG
-sysbench --test=cpu --cpu-max-prime=20000 --num-threads=4 run 2>&1 >> $LOG
+sysbench cpu --cpu-max-prime=50000 --threads=4 --time=300 run 2>&1 >> $LOG
 STRESS_EXIT_CODE=$?
-echo "=== Stress test finished at $(date) ===" >> $LOG
+echo "
+=== Stress test finished at $(date) ===" >> $LOG
 
 # Stop temperature logging
-echo "Stopping temperature logging..."
 kill $LOGGER_PID 2>/dev/null
 
 echo "Performance test finished. Output saved to $LOG"
