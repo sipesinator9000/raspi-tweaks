@@ -29,7 +29,16 @@ Test Name: $TEST_NAME
 ## Add some test params to the top of the log
 #echo "CPU Clock Speed: $CPU_CLOCK_MHZ Mhz" >> $LOG_FILE
 #echo "CPU Voltage: $CPU_V volts" >> $LOG_FILE
-echo "$SYSTEM_STATS
+#echo "$SYSTEM_STATS
+
+echo "Current max params
+======================================="
+for param in arm_freq gpu_freq core_freq sdram_freq over_voltage sdram_over_voltage; do
+  echo "$param: $(vcgencmd get_config $param)"
+done
+
+Stop
+
 
 =======================================
 " >> $LOG_FILE
