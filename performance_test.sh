@@ -18,19 +18,19 @@ CPU_VOLTS=$(vcgencmd measure_volts)
 THROTTLED=$(vcgencmd get_throttled)
 
 ## Create a header for the report
-echo "===== Performance Report $TEST_NAME ======
+echo "===== Performance Report  ======
 
 $DATE
 Test Name: $TEST_NAME
 " >> $LOG
 
 echo "Current max params
-======================================="
-for param in arm_freq gpu_freq core_freq sdram_freq over_voltage sdram_over_voltage; do
-  echo "$param: $(vcgencmd get_config $param)"
+=======================================" >> $LOG
+for param in arm_freq gpu_freq core_freq sdram_freq over_voltage; do
+  echo "$(vcgencmd get_config $param)" >> $LOG
 done
 
-=======================================
+echo "=======================================
 " >> $LOG
 
 ## Start temperature logging in the background
