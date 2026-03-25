@@ -2,11 +2,14 @@
 
 set -eo nounset
 
-## Ask the user to name the test
+## Prompt the user to name the test
 echo "Enter test name"
 read TEST_NAME
-mkdir -p logs
-LOG=logs/$TEST_NAME.log
+
+## Create the log and logging directory
+mkdir -p "${LOG_DIR:=$HOME/code/raspi-tweaks/logs}"
+DATE=`date +"%Y-%m-%d"`
+touch "${LOG:=$LOG_DIR/$DATE-$TEST_NAME.log}"
 
 ## Define some system params
 CPU_CLOCK=`cat /sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_max_freq`
