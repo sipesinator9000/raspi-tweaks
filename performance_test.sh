@@ -11,12 +11,11 @@ mkdir -p "${LOG_DIR:=$HOME/code/raspi-tweaks/logs}"
 DATE=`date +"%Y-%m-%d"`
 touch "${LOG:=$LOG_DIR/$DATE-$TEST_NAME.log}"
 
-## Define some system params
-CPU_CLOCK=`cat /sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_max_freq`
-CPU_CLOCK_MHZ=$(expr $CPU_CLOCK / 1000)
-CPU_V=`vcgencmd measure_volts core`
-SYSTEM_STATS=`vcgencmd get_config int | egrep "(arm|core|gpu|sdram)_freq|over_voltage|sdram_schmoo"`
-DATE=`date +"%Y-%m-%d"`
+## Define some things
+TIME=$(date +%T)
+CPU_TEMP=$(vcgencmd measure_temp)
+CPU_VOLTS=$(vcgencmd measure_volts)
+THROTTLED=$(vcgencmd get_throttled)
 
 ## Create a header for the report
 echo "===== Performance Report $TEST_NAME ======
@@ -25,19 +24,11 @@ $DATE
 Test Name: $TEST_NAME
 " >> $LOG
 
-## Add some test params to the top of the log
-#echo "CPU Clock Speed: $CPU_CLOCK_MHZ Mhz" >> $LOG_FILE
-#echo "CPU Voltage: $CPU_V volts" >> $LOG_FILE
-#echo "$SYSTEM_STATS
-
 echo "Current max params
 ======================================="
 for param in arm_freq gpu_freq core_freq sdram_freq over_voltage sdram_over_voltage; do
   echo "$param: $(vcgencmd get_config $param)"
 done
-
-Stop
-
 
 =======================================
 " >> $LOG
