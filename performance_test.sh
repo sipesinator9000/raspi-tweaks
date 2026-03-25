@@ -36,7 +36,7 @@ echo "=======================================
 ## Start temperature logging in the background
 log_temperature() {
     while true; do
-        echo "Time $TIME, CPU $CPU_TEMP, $CPU_VOLTS, $THROTTLED" >> $LOG
+        echo "Time $(date +"%T"), CPU $(vcgencmd measure_temp), $(vcgencmd measure_volts), $(vcgencmd get_throttled), MEM $(free | awk '/^Mem/ {printf "%d%s",$3/$2*100,"%"}')" >> $LOG_FILE
         sleep 1
     done
 }
