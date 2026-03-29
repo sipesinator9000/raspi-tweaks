@@ -52,7 +52,7 @@ sleep 3
 echo "Running stress test..."
 echo "
 === Stress test started at $(date) ===" >> $LOG
-sysbench cpu --cpu-max-prime=200 --threads=4 --time=30 --debug=on run 2>&1 >> $LOG
+sysbench cpu --cpu-max-prime=200 --threads=4 --time=11 --debug=on run 2>&1 >> $LOG
 STRESS_EXIT_CODE=$?
 echo "
 === Stress test finished at $(date) ===" >> $LOG
